@@ -3,7 +3,7 @@
 > The world's first Bayesian-powered archetype classifier.  
 > Now with Signal integration, prank payloads, and a B.S. in Cuckological Sciences™.
 
-![CuckBayes Icon](assets/CuckBayes.png)
+![CuckBayes Icon](assets/cuckbayes.png)
 
 ---
 
