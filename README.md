@@ -129,12 +129,9 @@ This transmission brought to you by CuckBayes™.
 
 This project is licensed under the MIT License. Use responsibly (or don’t).
 
----
-
 ## 🙈 Disclaimer
 
 This is a parody tool meant for humor, not diagnosis.
 Use at your own psychological risk.
 
-```
 
