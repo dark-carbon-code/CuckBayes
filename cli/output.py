@@ -27,7 +27,7 @@ def show_results(result: dict):
     # Archetype Details
     console.print(f"🎭 Archetype: {title}", style="bold yellow")
     console.print(f"📊 CuckScore™: {score} / {max_score}", style="bold yellow")
-    console.print(f"🧠 Probability: {probability:.0%}", style="bold cyan")  # ✅ Updated label
+    console.print(f"🧠 Cuckability: {probability:.0%}", style="bold cyan")  # ✅ Updated label
     console.print(f"📉 Meter: {meter}\n", style="bold magenta")
 
     # Flavor Text and Prank Payloads
@@ -44,7 +44,7 @@ def show_results(result: dict):
 
     message = f"""[CuckBayes Broadcast Alert: {user_name}'s results are in!]
 Archetype: {title}
-CuckScore: {score}/{max_score} | Probability: {probability:.0%}
+CuckScore: {score}/{max_score} | Cuckability: {probability:.0%}
 Verdict: {label.upper()}
 
 Degree awarded: B.S. in Cuckological Sciences
