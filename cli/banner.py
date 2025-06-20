@@ -1,11 +1,18 @@
+# cli/banner.py
+
 import time
 import os
+import platform
 import random
+import threading
+from shutil import get_terminal_size
 from rich.console import Console
 from rich.text import Text
 from rich.style import Style
 
 console = Console()
+
+colors = ["magenta", "purple4", "cyan", "deep_sky_blue1", "blue", "turquoise2"]
 
 banner_lines = [
     "  ______  __    __    ______  __  ___ .______        ___   ____    ____  _______     _______.",
@@ -17,7 +24,14 @@ banner_lines = [
     "                                                                                             "
 ]
 
-colors = ["magenta", "purple4", "cyan", "deep_sky_blue1", "blue", "turquoise2"]
+def play_intro_sound():
+    try:
+        import pygame
+        pygame.mixer.init()
+        pygame.mixer.music.load("assets/cuckbayes_theme.mp3")
+        pygame.mixer.music.play()
+    except Exception as e:
+        console.print(f"[yellow]⚠️ Could not play intro theme: {e}[/yellow]")
 
 def type_banner(lines, delay=0.07):
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -41,6 +55,35 @@ def flicker_final(lines):
     console.print(Text(">> CuckBayes: A Serious Tool for the Serious Cuck <<", style="bold magenta"))
 
 def render_intro_banner():
+    # Start theme music in background
+    threading.Thread(target=play_intro_sound, daemon=True).start()
+
+    width = get_terminal_size().columns
+    divider = "═" * width
+
+    console.print(f"[bold blue]{divider}")
+    console.print(Text("🧠 CuckBayes™".center(width), style="bold magenta"))
+    console.print(Text("Bayesian Archetype Classification Engine".center(width), style="italic cyan"))
+    console.print(f"[bold blue]{divider}")
+    time.sleep(0.8)
+
     type_banner(banner_lines)
     time.sleep(0.5)
     flicker_final(banner_lines)
+
+    animated_lines = [
+        ">> Signal is active...",
+        ">> Bayesian priors loaded...",
+        ">> Memetic payloads unlocked...",
+        ">> Establishing trust boundary...",
+        ">> Retrieving Cuckman/Alphaman models...",
+        ">> Finalizing archetype scaffolding...",
+        "[bold green]>> Initialization Complete.[/bold green]",
+    ]
+
+    for line in animated_lines:
+        console.print(line.center(width))
+        time.sleep(0.4)
+
+    console.print("\n" + "⌛ Launching the test sequence...".center(width), style="bold yellow")
+    time.sleep(1.2)
