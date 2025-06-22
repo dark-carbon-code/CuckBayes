@@ -1,9 +1,11 @@
 # cli/archetype_builder.py
 
+from utils.cuckgpt_agent import stream_cuckgpt
+
 def ask_yes_no(prompt):
     answer = input(f"{prompt} [y/N]: ").strip().lower()
+    print_cuckgpt_stream(prompt, answer)
     return answer == 'y'
-
 
 def ask_choice(prompt, choices):
     print(f"\n{prompt}")
@@ -12,14 +14,26 @@ def ask_choice(prompt, choices):
     while True:
         choice = input("Select an option: ").strip()
         if choice.isdigit() and 1 <= int(choice) <= len(choices):
-            return choices[int(choice) - 1]
+            selected = choices[int(choice) - 1]
+            print_cuckgpt_stream(prompt, selected)
+            return selected
 
+def print_cuckgpt_stream(prompt, user_input):
+    try:
+        stream_cuckgpt(f"User was asked: '{prompt}'. They answered: '{user_input}'.")
+        print()
+    except Exception as e:
+        print(f"🤖 [CuckGPT]: Failed to respond: {e}")
 
 def run_archetype_builder():
     print("\n🧬 Welcome to the CuckBayes Archetype Builder™")
     print("Answer honestly. Your digital dignity is already compromised.\n")
 
     traits = {}
+
+    name = input("👤 Please enter your name: ").strip()
+    traits["user_name"] = name or "Anonymous"
+    print_cuckgpt_stream("What is your name?", traits["user_name"])
 
     # Reddit & Meme Lore
     traits["subreddit"] = ask_choice("Which subreddit do you most identify with?", [
@@ -110,14 +124,35 @@ def run_archetype_builder():
         "Just vibe on HackTheBox 🌐"
     ])
 
+    traits["watches_from_closet"] = ask_yes_no(
+        "Have you ever 'just watched' because she asked you to?"
+    )
+
+    traits["denies_jealousy"] = ask_choice(
+        "How do you respond when she mentions Chad from work?",
+        [
+            "Laugh nervously and change subject",
+            "Say you're totally fine with it",
+            "Immediately bring up your 'friend' Clara"
+        ]
+    )
+
+    traits["cuck_reddit"] = ask_choice(
+        "Which of these do you browse late at night?", [
+            "r/cuckold",
+            "r/hotwife",
+            "r/DeadBedrooms",
+            "None of the above (copium)"
+        ]
+    )
+
     # 🥩 Liver King Lore
     traits["eats_raw_liver"] = ask_yes_no(
         "Have you ever eaten raw liver 'for the ancestral gains'?"
     )
 
     traits["liverking_affiliation"] = ask_choice(
-        "Which best describes your stance on Liver King?",
-        [
+        "Which best describes your stance on Liver King?", [
             "He’s the Natty Messiah",
             "He lied, but I still pop desiccated organs",
             "He’s a roid clown in a loincloth",
@@ -127,8 +162,7 @@ def run_archetype_builder():
 
     # 💉 Tren Universe
     traits["tren_usage"] = ask_choice(
-        "Be honest. Have you ever used trenbolone (Tren)?",
-        [
+        "Be honest. Have you ever used trenbolone (Tren)?", [
             "Yes, and I’d do it again",
             "No, but I research it daily",
             "I only microdose for vitality",
@@ -137,8 +171,7 @@ def run_archetype_builder():
     )
 
     traits["tren_attitude"] = ask_choice(
-        "What’s your take on guys who run Tren?",
-        [
+        "What’s your take on guys who run Tren?", [
             "Legends of modern warfare",
             "Meme freaks with gyno",
             "Jealous I can't afford it",
@@ -146,8 +179,5 @@ def run_archetype_builder():
         ]
     )
 
-    traits["has_gyno"] = ask_yes_no(
-        "Do you occasionally check for gyno in the mirror?"
-    )
-
+    traits["has_gyno"] = ask_yes_no("Do you occasionally check for gyno in the mirror?")
     return traits
