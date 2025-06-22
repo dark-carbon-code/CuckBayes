@@ -36,6 +36,7 @@ You'll receive:
 - 🖼️ Mascots, icons, and certificate templates included
 - 📂 Cross-platform file opening of generated certs
 - 🪖 Malware-themed jokes recognizable to OT/IT cybersecurity pros
+- 🎵 Intro theme music powered by `pygame` (optional)
 
 ---
 
@@ -45,6 +46,7 @@ You'll receive:
 - Python 3.10+
 - Windows, macOS, or Linux
 - Optional (for Signal integration): `signal-cli`
+- Optional (for audio): `pygame` and sound support
 
 ### Clone the repo
 ```bash
@@ -56,6 +58,15 @@ cd CuckBayes
 
 ```bash
 pip install -r requirements.txt
+```
+
+### (Optional) macOS Setup Script
+
+If you're on a Mac, run the helper setup script to install dependencies and launch the app:
+
+```bash
+chmod +x setup_mac.sh
+./setup_mac.sh
 ```
 
 ---
@@ -72,9 +83,10 @@ You’ll be prompted to:
 
 1. Enter your name
 2. Answer a series of lifestyle/cybersecurity questions
-3. Receive final classification (Cuckman or Alphaman)
-4. Trigger prank payloads and Signal broadcast
-5. (If Cuckman) Generate and auto-open two personalized PNG certificates
+3. Hear the theme song (if sound is enabled)
+4. Receive final classification (Cuckman or Alphaman)
+5. Trigger prank payloads and Signal broadcast
+6. (If Cuckman) Generate and auto-open two personalized PNG certificates
 
 ---
 
@@ -82,7 +94,8 @@ You’ll be prompted to:
 
 ```
 CuckBayes/
-├── assets/                  # Mascots, icons, certificate templates
+├── assets/                  # Mascots, icons, certificate templates, theme music
+│   └── cuckbayes_theme.mp3
 ├── cli/                     # CLI logic & outputs
 │   ├── archetype_builder.py
 │   ├── banner.py
@@ -96,6 +109,7 @@ CuckBayes/
 │   ├── certificate_generator.py
 │   └── messaging.py
 ├── generated_certs/        # Output certs
+├── setup_mac.sh            # 🖥️ macOS setup script
 ├── requirements.txt
 ├── cuckbayes_cli.py         # 🔥 Main CLI entry point
 └── README.md
@@ -162,4 +176,6 @@ Inspired by:
 * Bad Bayesian math and great memes
 
 > *"Cuculus Semper Vigilantes" — Signal State University Motto*
+
+
 
