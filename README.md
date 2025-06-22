@@ -1,7 +1,7 @@
 # 🧠 CuckBayes™
 
 > The world's first Bayesian-powered archetype classifier.  
-> Now featuring Signal integration, prank payloads, and official certification from the most prestigious fictional universities in cybersecurity.
+> Now featuring Signal integration, prank payloads, interactive AI narration, and certification from prestigious fictional universities in cybersecurity.
 
 ![CuckBayes Icon](assets/cuckbayes.png)
 
@@ -16,19 +16,18 @@
 - 🔒 **Cuckman** — Signal-using, chair-watching, ICS-overwhelmed softshells  
 - 💪 **Alphaman** — Grid-hardening, OT-pentesting, protein-shaking dominators
 
-You'll receive:
-- A CuckScore™ with Probability
-- Dynamic emoji meter visualization
-- Optional Signal group broadcast
-- Customized prank payloads for both archetypes
-- And (if you're a Cuckman)... certified degrees from:
-  - SANZ Technology Institute (GCUCK Certification)
-  - Signal State University (B.S. in Cuckology)
+### Now Featuring:
+- **🗣️ CuckGPT** — A sarcastic CLI narrator powered by a local Ollama LLM
+- **🎶 Theme Music** — Terminal-width intro banner and optional music
+- **💣 Prank Payloads** — For both Cuckman and Alphaman types
+- **📡 Signal Integration** — For broadcasting results to your group
+- **📜 Certification** — Auto-generated PNG certs with fictional degrees
 
 ---
 
 ## 🧰 Features
 - ✅ Interactive CLI quiz (with `rich` and `InquirerPy`)
+- 🤖 Real-time AI commentary via `Ollama` and `llama3` or `mistral` model
 - 🎓 Auto-generated certification PNGs with your name
 - 📡 Optional Signal CLI messaging to preconfigured group
 - 💣 Prank payloads for **both** Cuckman and Alphaman results
@@ -44,9 +43,9 @@ You'll receive:
 
 ### Prerequisites
 - Python 3.10+
-- Windows, macOS, or Linux
-- Optional (for Signal integration): `signal-cli`
-- Optional (for audio): `pygame` and sound support
+- [Ollama](https://ollama.com/) (required for CuckGPT responses)
+- Optional: `signal-cli` for messaging
+- Optional: `pygame` for theme music
 
 ### Clone the repo
 ```bash
@@ -60,9 +59,15 @@ cd CuckBayes
 pip install -r requirements.txt
 ```
 
-### (Optional) macOS Setup Script
+### Pull Ollama model
 
-If you're on a Mac, run the helper setup script to install dependencies and launch the app:
+You must have Ollama installed. Pull a compatible model like `llama3` or `mistral`:
+
+```bash
+ollama pull llama3
+```
+
+### (Optional) macOS Setup Script
 
 ```bash
 chmod +x setup_mac.sh
@@ -73,8 +78,6 @@ chmod +x setup_mac.sh
 
 ## 🧪 How to Use
 
-Run the main CLI:
-
 ```bash
 python cuckbayes_cli.py
 ```
@@ -83,63 +86,11 @@ You’ll be prompted to:
 
 1. Enter your name
 2. Answer a series of lifestyle/cybersecurity questions
-3. Hear the theme song (if sound is enabled)
-4. Receive final classification (Cuckman or Alphaman)
-5. Trigger prank payloads and Signal broadcast
-6. (If Cuckman) Generate and auto-open two personalized PNG certificates
-
----
-
-## 📁 Project Structure
-
-```
-CuckBayes/
-├── assets/                  # Mascots, icons, certificate templates, theme music
-│   └── cuckbayes_theme.mp3
-├── cli/                     # CLI logic & outputs
-│   ├── archetype_builder.py
-│   ├── banner.py
-│   └── output.py
-├── model/                   # Prediction logic (Bayesian)
-│   └── predictor.py
-├── scripts/                 # Pranks + Signal integration
-│   ├── prank_payloads.py
-│   └── send_signal.py
-├── utils/                   # Cert gen and messaging
-│   ├── certificate_generator.py
-│   └── messaging.py
-├── generated_certs/        # Output certs
-├── setup_mac.sh            # 🖥️ macOS setup script
-├── requirements.txt
-├── cuckbayes_cli.py         # 🔥 Main CLI entry point
-└── README.md
-```
-
----
-
-## 🎓 Example Output
-
-```
-💪 FINAL VERDICT: ALPHAMAN 💪
-🎭 Archetype: Grid Dominator
-📊 CuckScore™: 3 / 14
-🧠 Cuckability: 9%
-📉 Meter: 🟩🟩🟩⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-
-🔺 Keep dominating, Alpha. But beware the fedoras.
-
-[CuckBayes Broadcast Alert: Scott Bowman]
-Archetype: Grid Dominator
-CuckScore: 3/14 | Cuckability: 9%
-Verdict: ALPHAMAN
-
-Degree awarded: N/A (Too alpha to enroll)
-Signal Activity: Dormant
-Chair Status: Thrown into bonfire
-
-Message auto-certified by Signal State University.
-This transmission brought to you by CuckBayes™.
-```
+3. Watch the intro banner and hear the music (optional)
+4. Interact with **CuckGPT** while answering (LLM-powered)
+5. Receive final classification (Cuckman or Alphaman)
+6. Trigger prank payloads and Signal broadcast
+7. (If Cuckman) Generate and auto-open two personalized PNG certificates
 
 ---
 
@@ -148,34 +99,34 @@ This transmission brought to you by CuckBayes™.
 To enable Signal broadcast:
 
 1. Install [`signal-cli`](https://github.com/AsamK/signal-cli)
-2. Link your number via QR code
-3. Update your phone number and group ID in `utils/messaging.py`
+2. Register your phone via QR code
+3. Update phone number and group ID in `utils/messaging.py`
 
 ---
 
 ## 🐳 Docker Support (Coming Soon)
 
-A `Dockerfile` will soon allow you to containerize the app and run it in a secure sandboxed environment with all prank payloads contained.
+Containerized version with all dependencies, model, and sandboxing.
 
 ---
 
 ## 📜 License
 
-MIT License. Satirical use only.
-Not affiliated with actual certifying bodies or institutions of higher learning.
+MIT License. For parody use only.
 
 ---
 
 ## 🙌 Credits
 
-Built by cyber nerds for cyber nerds.
-Inspired by:
+Built by cyber nerds for cyber nerds. Inspired by:
 
-* MITRE ATT\&CK adversary names
-* Malware, red teaming, and Signal chat chaos
-* Bad Bayesian math and great memes
+* MITRE ATT\&CK & ICS memes
+* Cybersecurity war stories
+* Internet archetypes and satire
+* Bad Bayesian math, great jokes
 
 > *"Cuculus Semper Vigilantes" — Signal State University Motto*
+
 
 
 
